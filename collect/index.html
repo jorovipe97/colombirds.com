@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<!-- http-equiv is equivalent to name attribute -->
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="description" content="Discover the richest bird biodiversity in Colombia">
+  <meta name="author" content="Jose Villalobos, www.gamebite10.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Find Collections</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="./../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="./../css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body ng-app="collect" ng-controller="collectCtrl" ng-init="loadUnblockedPacks()">
+	<!-- Nav bar -->
+	<div class="navbar-fixed">    
+    <nav class="light-green lighten-1" role="navigation">
+      <div class="nav-wrapper container">
+        <a id="logo-container" href="/" class="brand-logo white-text">Colombirds</a>
+
+        <!-- Hides on tablets and below -->
+        <ul class="right hide-on-med-and-down">
+          <li class="active"><a href="/collect/" class="white-text">Collect</a></li>
+          <li><a href="/mycollection/" class="white-text">My Collection</a></li>
+        </ul>
+
+        <ul id="nav-mobile" class="sidenav">
+          <li class="active"><a href="/collect/">Collect</a></li>
+          <li><a href="/mycollection/">My Collection</a></li>
+        </ul>
+        <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons green-text text-darken-4">menu</i></a>
+      </div>
+    </nav>
+  </div>
+
+	<!--   Submit code section   -->
+	<div class="container">
+    <div class="section">      
+      <div class="row">
+
+        <div class="input-field col s12 m6">
+        	<i class="material-icons prefix">add_circle</i>
+        	<input type="text" ng-model="inputCode" id="autocomplete-input" class="validate">
+          <label for="autocomplete-input">Code for rare collections</label>    
+        </div>
+
+        <div class="input-field col s12 m2">
+        	<button id="codeSubmitBtn" class="btn waves-effect waves-light light-green lighten-1" type="submit" name="action" ng-click="submitCode()">Submit<i class="material-icons right">send</i>
+				  </button>
+        </div>
+      </div>
+      <div class="row">
+      	<h1>Your code is {{inputCode}}</h1>
+      </div>
+
+      <!-- Header rare packs -->
+      <div class="row">
+    		<div class="col s12">
+    			<h3>Unblocked rare packs</h3>
+    		</div>  			
+    	</div>
+
+    	<!-- Unblocked rare packs -->
+    	<div class="row">
+    		<div class="col s12 m4" ng-repeat="pack in unblockedPacks">
+    			<div class="card">
+    				<div class="card-image">
+		          <img ng-src="./../img/cards/{{pack.img}}">
+		          <span class="card-title">{{pack.name}}</span>
+		        </div>
+		        <div class="card-content">
+		          <p>{{pack.description}}</p>
+		        </div>
+		        <div class="card-action">
+		          <a class="modal-trigger" href="#modalrares" ng-click="openRare(pack)">Open collection</a>
+		        </div>
+    			</div>
+    		</div>
+    	</div>
+
+  		<!-- Modals For collections -->
+		 	<!-- Modal Structure -->
+			<div id="modalrares" class="modal">
+				<div class="modal-content">
+		      <h4>{{selectedRarePack.name}}</h4>
+		      <p>{{selectedRarePack.description}}</p>
+		      <p>Here we are going to add the cards of this collection</p>
+		    </div>
+		    <div class="modal-footer">
+		      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+		    </div>
+			</div>
+
+    </div>
+  </div>
+  <!-- End Container -->
+
+  <!-- Header free packs -->
+  <div class="container">
+    <div class="section">
+    	<div class="row">
+    		<div class="col s12">
+    			<h3>Free packs</h3>
+    		</div>  			
+    	</div>
+    	
+    	<div class="row">    		
+    		<div class="col s12">
+    			<h5>Remaining daily packs: 3</h5>
+    		</div>
+    	</div>
+    </div>
+  </div>
+
+
+  <!-- Grid of collectable cards -->
+  <div class="container">
+    <div class="section">
+    	<div class="row">
+
+    		<div class="col s12 m4">
+    			<div class="card">
+    				<div class="card-image">
+		          <img src="./../img/cards/sample-1.jpg">
+		          <span class="card-title">Turpial 1</span>
+		        </div>
+		        <div class="card-content">
+		          <p>I am a very nice bird, let's make birds great again</p>
+		        </div>
+		        <div class="card-action">
+		          <a class="modal-trigger" href="#modal1">Open collection</a>
+		        </div>
+    			</div>
+    		</div>
+
+    		<div class="col s12 m4">
+    			<div class="card">
+    				<div class="card-image">
+		          <img src="./../img/cards/sample-1.jpg">
+		          <span class="card-title">Turpial</span>
+		        </div>
+		        <div class="card-content">
+		          <p>I am a very nice bird, let's make birds great again</p>
+		        </div>
+		        <div class="card-action">
+		          <a class="modal-trigger" href="#modal2">Open collection</a>
+		        </div>
+    			</div>
+    		</div>
+
+    		<div class="col s12 m4">
+    			<div class="card">
+    				<div class="card-image">
+		          <img src="./../img/cards/sample-1.jpg">
+		          <span class="card-title">Turpial</span>
+		        </div>
+		        <div class="card-content">
+		          <p>I am a very nice bird, let's make birds great again</p>
+		        </div>
+		        <div class="card-action">
+		          <a class="modal-trigger"  href="#modal3">Open collection</a>
+		        </div>
+    			</div>
+    		</div>
+
+    		<div class="col s12 m4">
+    			<div class="card">
+    				<div class="card-image">
+		          <img src="./../img/cards/sample-1.jpg">
+		          <span class="card-title">Turpial</span>
+		        </div>
+		        <div class="card-content">
+		          <p>I am a very nice bird, let's make birds great again</p>
+		        </div>
+		        <div class="card-action">
+		          <a class="modal-trigger"  href="#modal4">Open collection</a>
+		        </div>
+    			</div>
+    		</div>
+
+    		<div class="col s12 m4">
+    			<div class="card">
+    				<div class="card-image">
+		          <img src="./../img/cards/sample-1.jpg">
+		          <span class="card-title">Turpial</span>
+		        </div>
+		        <div class="card-content">
+		          <p>I am a very nice bird, let's make birds great again</p>
+		        </div>
+		        <div class="card-action">
+		          <a class="modal-trigger"  href="#modal5">Open collection</a>
+		        </div>
+    			</div>
+    		</div>
+
+    		<div class="col s12 m4">
+    			<div class="card">
+    				<div class="card-image">
+		          <img src="./../img/cards/sample-1.jpg">
+		          <span class="card-title">Turpial</span>
+		        </div>
+		        <div class="card-content">
+		          <p>I am a very nice bird, let's make birds great again</p>
+		        </div>
+		        <div class="card-action">
+		          <a class="modal-trigger" href="#modal6">Open collection</a>
+		        </div>
+    			</div>
+    		</div>
+
+    	</div>
+    </div>
+  </div>
+
+  <!-- Modals For collections -->
+ 	<!-- Modal Structure -->
+	<div id="modal1" class="modal">
+		<div class="modal-content">
+      <h4>Turpi</h4>
+      <p>I am a nice turpy that wants be watched by you :D</p>
+      <p>Here we are going to add the cards of this collection</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Add to My Collections</a>
+    </div>
+	</div>
+
+	<div id="modal2" class="modal">
+		<div class="modal-content">
+      <h4>Turpi</h4>
+      <p>I am a nice turpy that wants be watched by you :D</p>
+      <p>Here we are going to add the cards of this collection</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Add to My Collections</a>
+    </div>
+	</div>
+
+	<div id="modal3" class="modal">
+		<div class="modal-content">
+      <h4>Turpi</h4>
+      <p>I am a nice turpy that wants be watched by you :D</p>
+      <p>Here we are going to add the cards of this collection</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Add to My Collections</a>
+    </div>
+	</div>
+
+	<div id="modal4" class="modal">
+		<div class="modal-content">
+      <h4>Turpi</h4>
+      <p>I am a nice turpy that wants be watched by you :D</p>
+      <p>Here we are going to add the cards of this collection</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Add to My Collections</a>
+    </div>
+	</div>
+
+	<div id="modal5" class="modal">
+		<div class="modal-content">
+      <h4>Turpi</h4>
+      <p>I am a nice turpy that wants be watched by you :D</p>
+      <p>Here we are going to add the cards of this collection</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Add to My Collections</a>
+    </div>
+	</div>
+
+	<div id="modal6" class="modal">
+		<div class="modal-content">
+      <h4>Turpi</h4>
+      <p>I am a nice turpy that wants be watched by you :D</p>
+      <p>Here we are going to add the cards of this collection</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Add to My Collections</a>
+    </div>
+	</div>
+
+  <footer class="page-footer light-green">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Company Bio</h5>
+          <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
+
+
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Settings</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Link 1</a></li>
+            <li><a class="white-text" href="#!">Link 2</a></li>
+            <li><a class="white-text" href="#!">Link 3</a></li>
+            <li><a class="white-text" href="#!">Link 4</a></li>
+          </ul>
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Connect</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Link 1</a></li>
+            <li><a class="white-text" href="#!">Link 2</a></li>
+            <li><a class="white-text" href="#!">Link 3</a></li>
+            <li><a class="white-text" href="#!">Link 4</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      Made by <a class="green-text text-darken-4" href="http://gamebite10.com" target="_blank">Gamebite10</a>
+      </div>
+    </div>
+  </footer>
+
+	<!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script src="./../js/materialize.js"></script>
+  <script src="./../js/init.js"></script>
+  <script src="js/collect.js"></script>
+  <script src="js/collectController.js"></script>
+</body>
+</html>

@@ -11,25 +11,29 @@
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+ <!--  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/> -->
+ <link href="css/style.css" type="text/css" rel="stylesheet"/>
 </head>
 <body>
-  <nav class="light-green lighten-1" role="navigation">
-    <div class="nav-wrapper container">
-      <a id="logo-container" href="#" class="brand-logo white-text">Colombirds</a>
-      <!-- Hides on tablets and below -->
-      <ul class="right hide-on-med-and-down">
-        <li><a href="#" class="white-text">Collect</a></li>
-        <li><a href="#" class="white-text">My Collection</a></li>
-      </ul>
+  <div class="navbar-fixed">    
+    <nav class="light-green lighten-1" role="navigation">
+      <div class="nav-wrapper container">
+        <a id="logo-container" href="/" class="brand-logo white-text">Colombirds</a>
+        <!-- Hides on tablets and below -->
+        <ul class="right hide-on-med-and-down">
+          <li><a href="/collect/" class="white-text">Collect</a></li>
+          <li><a href="/mycollection/" class="white-text">My Collection</a></li>
+        </ul>
 
-      <ul id="nav-mobile" class="sidenav">
-        <li><a href="#">Collect</a></li>
-        <li><a href="#">My Collection</a></li>
-      </ul>
-      <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons green-text text-darken-4">menu</i></a>
-    </div>
-  </nav>
+        <ul id="nav-mobile" class="sidenav">
+          <li><a href="/collect/">Collect</a></li>
+          <li><a href="/mycollection/">My Collection</a></li>
+        </ul>
+        <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons green-text text-darken-4">menu</i></a>
+      </div>
+    </nav>
+  </div>
+  
 
   <div id="index-banner" class="parallax-container">
     <div class="section no-pad-bot">
@@ -40,7 +44,7 @@
           <h5 class="header col s12 grey-text text-lighten-4">Discover the richest bird biodiversity in Colombia</h5>
         </div>
         <div class="row center">
-          <a href="#" id="download-button" class="btn-large waves-effect waves-light light-green lighten-1">Start Collecting</a>
+          <a href="/collect/" id="download-button" class="btn-large waves-effect waves-light light-green lighten-1">Start Collecting</a>
         </div>
         <br><br>
 

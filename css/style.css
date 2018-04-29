@@ -15,6 +15,21 @@ p {
   line-height: 2rem;
 }
 
+/* This is required for solve a bug with the sidenav bar https://github.com/Dogfalo/materialize/issues/4046*/
+/*
+https://desarrolloweb.com/articulos/declaracion-important-css.html
+TODO: Study CSS W3 Specification https://www.w3.org/TR/2011/REC-CSS2-20110607/cascade.html#cascade
+https://stackoverflow.com/questions/9459062/in-which-order-do-css-stylesheets-override
+
+CSS no sobreescribe basado en el orden en el que se importan sino en algo que se llama la especifidad (specifity)
+del selector, la siguiente linea era necesaria cambiarla para solucionar el bug mensionado arriba, 
+sin embargo debido a que nuestro selector tenia menos especificidad que el definido por normalize.css
+nos toco recurrir al !important que lo que hace es que ignora la especifidad y deja como como valor el del ultimo 
+!important que encuentre
+*/
+.navbar-fixed { z-index: 9999 !important; }
+
+
 .sidenav-trigger {
   color: #26a69a;
 }
@@ -37,6 +52,8 @@ p {
   #index-banner .section {
     top: 10%;
   }
+
+
 }
 
 @media only screen and (max-width : 600px) {

@@ -1,6 +1,7 @@
 (function($){
   $(function(){
-
+  	// Init modals
+  	$('.modal').modal();
     $('.sidenav').sidenav();
     $('.parallax').parallax();
 
