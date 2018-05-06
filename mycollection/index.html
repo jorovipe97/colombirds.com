@@ -14,7 +14,7 @@
   <link href="./../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="./../css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
-<body>
+<body ng-app="myCollection" ng-controller="myCollectionCtrl" ng-init="loadUserCollections()">
 	<div class="navbar-fixed">    
     <nav class="light-green lighten-1" role="navigation">
       <div class="nav-wrapper container">
@@ -40,25 +40,54 @@
     	<div class="row">
     		<div class="col s12">
     			<h2>My Collections</h2>
+          <h4>Rare packs</h4>
     		</div>
     	</div>
 
       <!--   Icon Section   -->
-      <div class="row">
-        <div class="col s12 m4">
+      <div class="row" >
+        <!-- https://docs.angularjs.org/error/ngRepeat/dupes -->
+        <div class="col s12 m4" ng-repeat="pack in unblockedPacks track by $index">
     			<div class="card">
     				<div class="card-image">
-		          <img src="./../img/cards/sample-1.jpg">
-		          <span class="card-title">Turpial 1</span>
+		          <img ng-src="./../img/cards/Set1/{{pack.img}}">
+		          <span class="card-title">{{pack.name}}</span>
 		        </div>
 		        <div class="card-content">
-		          <p>I am a very nice bird, let's make birds great again</p>
+		          <p>{{pack.description}}</p>
 		        </div>
 		        <div class="card-action">
-		          <a class="modal-trigger" href="#modal1">Open collection</a>
+		          <a class="modal-trigger" href="#modal1" ng-click="openPack(pack)">Open collection</a>
 		        </div>
     			</div>
     		</div>  	
+      </div>
+
+      <div class="section">
+        <div class="row">
+          <div class="col s12">
+            <h4>Free packs</h4>
+          </div>
+        </div>
+
+        <!--   Icon Section   -->
+        <div class="row" >
+          <!-- https://docs.angularjs.org/error/ngRepeat/dupes -->
+          <div class="col s12 m4" ng-repeat="pack in addedFreePacks track by $index">
+            <div class="card">
+              <div class="card-image">
+                <img ng-src="./../img/cards/Set1/{{pack.img}}">
+                <span class="card-title">{{pack.name}}</span>
+              </div>
+              <div class="card-content">
+                <p>{{pack.description}}</p>
+              </div>
+              <div class="card-action">
+                <a class="modal-trigger" href="#modal1" ng-click="openPack(pack)">Open collection</a>
+              </div>
+            </div>
+          </div>    
+        </div>
       </div>
 
     </div>
@@ -68,13 +97,21 @@
   <!-- Modals section -->
   <div id="modal1" class="modal">
 		<div class="modal-content">
-      <h4>Turpi</h4>
-      <p>I am a nice turpy that wants be watched by you :D</p>
-      <p>Here we are going to add the cards of this collection</p>
-      <p>Here user can sell individual cards</p>
+      <h4>{{openedPack.name}}</h4>
+      <p>{{openedPack.description}}</p>
+      <div class="row">
+        <div class="col s12 m4" ng-repeat="packImg in openedPack.packImgs track by $index">
+          <div class="card">
+            <div class="card-image">
+              <img ng-src="./../img/cards/Set1/{{packImg}}">
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+
     <div class="modal-footer">
-      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Ok</a>
     </div>
 	</div>
 
@@ -84,8 +121,6 @@
         <div class="col l6 s12">
           <h5 class="white-text">Company Bio</h5>
           <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
-
-
         </div>
         <div class="col l3 s12">
           <h5 class="white-text">Settings</h5>
@@ -116,7 +151,10 @@
 
 	<!--  Scripts-->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
   <script src="./../js/materialize.js"></script>
   <script src="./../js/init.js"></script>
+  <script src="js/myCollectionController.js"></script>
+
 </body>
 </html>
