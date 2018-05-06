@@ -229,6 +229,15 @@ app.controller("collectCtrl", function($scope) {
 		localStorage.setItem('lsAddedFreePacks', strobj);
 	}
 
+	$scope.loadAddedFreePacks = function()
+	{
+		if (localStorage.getItem('lsAddedFreePacks') !== null)
+		{
+			let str = localStorage.getItem('lsAddedFreePacks');
+			$scope.addedFreePacks = JSON.parse(str);
+		}
+	}
+
 
 });
 
