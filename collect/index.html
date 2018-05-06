@@ -14,7 +14,7 @@
   <link href="./../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="./../css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
-<body ng-app="collect" ng-controller="collectCtrl" ng-init="loadUnblockedPacks(); loadRemainingDailyFreePacks()">
+<body ng-app="collect" ng-controller="collectCtrl" ng-init="loadUnblockedPacks(); loadRemainingDailyFreePacks(); loadAddedFreePacks()">
 	<!-- Nav bar -->
 	<div class="navbar-fixed">    
     <nav class="light-green lighten-1" role="navigation">
@@ -66,7 +66,7 @@
     		<div class="col s12 m4" ng-repeat="pack in unblockedPacks track by $index">
     			<div class="card">
     				<div class="card-image">
-		          <img ng-src="./../img/cards/Set1/{{pack.img}}">
+		          <img ng-src="./../img/cards/set1/{{pack.img}}">
 		          <span class="card-title">{{pack.name}}</span>
 		        </div>
 		        <div class="card-content">
@@ -89,7 +89,7 @@
             <div class="col s12 m4" ng-repeat="packImg in selectedRarePack.packImgs track by $index">
               <div class="card">
                 <div class="card-image">
-                  <img ng-src="./../img/cards/Set1/{{packImg}}">
+                  <img ng-src="./../img/cards/set1/{{packImg}}">
                 </div>
               </div>
             </div>
@@ -130,7 +130,7 @@
     		<div class="col s12 m4" ng-repeat="pack in freePacksInfo track by $index">
     			<div class="card">
     				<div class="card-image">
-		          <img ng-src="./../img/cards/Set1/{{pack.img}}">
+		          <img ng-src="./../img/cards/set1/{{pack.img}}">
 		          <span class="card-title">{{pack.name}}</span>
 		        </div>
 		        <div class="card-content">
@@ -156,7 +156,7 @@
           <div class="col s12 m4" ng-repeat="packImg in openedPack.packImgs track by $index">
             <div class="card">
               <div class="card-image">
-                <img ng-src="./../img/cards/Set1/{{packImg}}">
+                <img ng-src="./../img/cards/set1/{{packImg}}">
               </div>
             </div>
           </div>
