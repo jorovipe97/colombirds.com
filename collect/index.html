@@ -17,7 +17,7 @@
 <body ng-app="collect" ng-controller="collectCtrl" ng-init="loadUnblockedPacks(); loadRemainingDailyFreePacks(); loadAddedFreePacks()">
 	<!-- Nav bar -->
 	<div class="navbar-fixed">    
-    <nav class="light-green lighten-1" role="navigation">
+    <nav class="purple lighten-1" role="navigation">
       <div class="nav-wrapper container">
         <a id="logo-container" href="/" class="brand-logo white-text">Colombirds</a>
 
@@ -31,80 +31,12 @@
           <li class="active"><a href="/collect/">Collect</a></li>
           <li><a href="/mycollection/">My Collection</a></li>
         </ul>
-        <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons green-text text-darken-4">menu</i></a>
+        <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons  white-text">menu</i></a>
       </div>
     </nav>
-  </div>
+  </div>	
 
-	<!--   Submit code section   -->
-	<div class="container">
-    <div class="section">      
-      <div class="row">
-
-        <div class="input-field col s12 m6">
-        	<i class="material-icons prefix">add_circle</i>
-        	<input type="text" ng-model="inputCode" id="autocomplete-input" class="validate">
-          <label for="autocomplete-input">Code for rare collections</label>    
-        </div>
-
-        <div class="input-field col s12 m2">
-        	<button id="codeSubmitBtn" class="btn waves-effect waves-light light-green lighten-1" type="submit" name="action" ng-click="submitCode()">Submit<i class="material-icons right">send</i>
-				  </button>
-        </div>
-      </div>
-
-      <!-- Header rare packs -->
-      <div class="row">
-    		<div class="col s12">
-    			<h3>Unblocked rare packs</h3>
-    		</div>  			
-    	</div>
-
-    	<!-- Unblocked rare packs -->
-    	<div class="row">
-        <!-- https://docs.angularjs.org/error/ngRepeat/dupes -->
-    		<div class="col s12 m4" ng-repeat="pack in unblockedPacks track by $index">
-    			<div class="card">
-    				<div class="card-image">
-		          <img ng-src="./../img/cards/set1/{{pack.img}}">
-		          <span class="card-title">{{pack.name}}</span>
-		        </div>
-		        <div class="card-content">
-		          <p>{{pack.description}}</p>
-		        </div>
-		        <div class="card-action">
-		          <a class="modal-trigger" href="#modalrares" ng-click="openRare(pack)">Open collection</a>
-		        </div>
-    			</div>
-    		</div>
-    	</div>
-
-  		<!-- Modals For collections -->
-		 	<!-- Modal Structure -->
-			<div id="modalrares" class="modal">
-				<div class="modal-content">
-		      <h4>{{selectedRarePack.name}}</h4>
-		      <p>{{selectedRarePack.description}}</p>
-          <div class="row">
-            <div class="col s12 m4" ng-repeat="packImg in selectedRarePack.packImgs track by $index">
-              <div class="card">
-                <div class="card-image">
-                  <img ng-src="./../img/cards/set1/{{packImg}}">
-                </div>
-              </div>
-            </div>
-          </div>
-		    </div>
-		    <div class="modal-footer">
-		      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Ok</a>
-		    </div>
-			</div>
-
-    </div>
-  </div>
-  <!-- End Container -->
-
-  <!-- Header free packs -->
+  <!-- START FREE PACKS -->
   <div class="container">
     <div class="section">
     	<div class="row">
@@ -150,7 +82,7 @@
  	<!-- Modal Structure -->
 	<div id="modal" class="modal">
 		<div class="modal-content">
-      <h4>{{openedPack.name}}</h4>
+      <h4>Unblocked Pack</h4>
       <p>{{openedPack.description}}</p>
       <div class="row">
           <div class="col s12 m4" ng-repeat="packImg in openedPack.packImgs track by $index">
@@ -166,8 +98,82 @@
       <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Ok</a>
     </div>
 	</div>
+  <!-- END FREE PACKS -->
 
-  <footer class="page-footer light-green">
+
+  <!-- START BOUGHT PACKS -->
+  <div class="container">
+    <div class="section">      
+      
+      <!-- Header rare packs -->
+      <div class="row">
+        <div class="col s12">
+          <h3>My bought packs</h3>
+        </div>        
+      </div>
+
+
+      <div class="row">
+
+        <form class="input-field col s12 m6" ng-submit="submitCode()">
+          <i class="material-icons prefix">add_circle</i>
+          <input type="text" ng-model="inputCode" id="autocomplete-input" class="validate">
+          <label for="autocomplete-input">Unblock pack with code</label>
+        </form>       
+
+        <div class="input-field col s12 m2">
+          <button id="codeSubmitBtn" class="btn waves-effect waves-light yellow darken-3" type="submit" name="action" ng-click="submitCode()">
+            Submit<i class="material-icons right">send</i>
+          </button>
+        </div>
+      </div>      
+
+      <!-- Unblocked rare packs -->
+      <div class="row">
+        <!-- https://docs.angularjs.org/error/ngRepeat/dupes -->
+        <div class="col s12 m4" ng-repeat="pack in unblockedPacks track by $index">
+          <div class="card">
+            <div class="card-image">
+              <img ng-src="./../img/cards/set1/{{pack.img}}">
+              <span class="card-title">{{pack.name}}</span>
+            </div>
+            <div class="card-content">
+              <p>{{pack.description}}</p>
+            </div>
+            <div class="card-action">
+              <a class="modal-trigger" href="#modalrares" ng-click="openRare(pack)">Open collection</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modals For collections -->
+      <!-- Modal Structure -->
+      <div id="modalrares" class="modal">
+        <div class="modal-content">
+          <h4>{{selectedRarePack.name}}</h4>
+          <p>{{selectedRarePack.description}}</p>
+          <div class="row">
+            <div class="col s12 m4" ng-repeat="packImg in selectedRarePack.packImgs track by $index">
+              <div class="card">
+                <div class="card-image">
+                  <img ng-src="./../img/cards/set1/{{packImg}}">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Ok</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- END BOUGHT PACKS -->
+
+
+  <footer class="page-footer purple lighten-1">
     <div class="container">
       <div class="row">
         <div class="col l6 s12">
@@ -198,7 +204,7 @@
     </div>
     <div class="footer-copyright">
       <div class="container">
-      Made by <a class="green-text text-darken-4" href="http://gamebite10.com" target="_blank">Gamebite10</a>
+      Made by <a class="white-text" href="http://gamebite10.com" target="_blank"><b>Gamebite10</b></a>
       </div>
     </div>
   </footer>

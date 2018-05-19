@@ -12,19 +12,17 @@ app.controller("collectCtrl", function($scope) {
 
 	$scope.rarePacksInfo = [
 		{
-			name: 'Turpial',
+			name: 'Garzas',
 			description: 'Hello, you may dont know me but i want fly over the sea :D',
 			img: 'GabanPionio.jpg',
 			codes: [
-				'turpial',
-				'turpy',
-				'turpi'
+				'garza',
+				'garzas',
+				'garz'
 			],
 			packImgs: [
-				'GabanPionio.jpg',
 				'GarzaMorena.jpg',
-				'GarzaPaleta.jpg',
-				'PatoGuire.jpg'
+				'GarzaPaleta.jpg'
 			]
 		},
 		{
