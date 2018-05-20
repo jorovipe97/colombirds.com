@@ -40,54 +40,30 @@
     	<div class="row">
     		<div class="col s12">
     			<h2>My Collections</h2>
-          <h4>Rare packs</h4>
     		</div>
     	</div>
 
       <!--   Icon Section   -->
       <div class="row" >
+
         <!-- https://docs.angularjs.org/error/ngRepeat/dupes -->
-        <div class="col s12 m4" ng-repeat="pack in unblockedPacks track by $index">
+        <div class="col s12 m4" ng-repeat="collection in collectionCards track by $index">
     			<div class="card">
     				<div class="card-image">
-		          <img ng-src="./../img/cards/set1/{{pack.img}}">
-		          <span class="card-title">{{pack.name}}</span>
+              <a class="modal-trigger" href="#modal1" ng-click="openCollection(collection)">
+		            <img ng-src="./../img/cards/set{{($index+1) + '/' + collection.cards[0].imgName}}">
+                <span class="card-title"><span ng-bind="collection.name"></span> </span>
+              </a>
+		          
 		        </div>
 		        <div class="card-content">
-		          <p>{{pack.description}}</p>
+		          <p>{{collection.description}}</p>
 		        </div>
 		        <div class="card-action">
-		          <a class="modal-trigger" href="#modal1" ng-click="openPack(pack)">Open collection</a>
+		          <a class="modal-trigger" href="#modal1" ng-click="openCollection(collection)">Open collection</a>
 		        </div>
     			</div>
     		</div>  	
-      </div>
-
-      <div class="section">
-        <div class="row">
-          <div class="col s12">
-            <h4>Free packs</h4>
-          </div>
-        </div>
-
-        <!--   Icon Section   -->
-        <div class="row" >
-          <!-- https://docs.angularjs.org/error/ngRepeat/dupes -->
-          <div class="col s12 m4" ng-repeat="pack in addedFreePacks track by $index">
-            <div class="card">
-              <div class="card-image">
-                <img ng-src="./../img/cards/set1/{{pack.img}}">
-                <span class="card-title">{{pack.name}}</span>
-              </div>
-              <div class="card-content">
-                <p>{{pack.description}}</p>
-              </div>
-              <div class="card-action">
-                <a class="modal-trigger" href="#modal1" ng-click="openPack(pack)">Open collection</a>
-              </div>
-            </div>
-          </div>    
-        </div>
       </div>
 
     </div>
@@ -97,17 +73,31 @@
   <!-- Modals section -->
   <div id="modal1" class="modal">
 		<div class="modal-content">
-      <h4>{{openedPack.name}}</h4>
-      <p>{{openedPack.description}}</p>
+      <h4>{{openedCollection.name}}</h4>
+      <p>{{openedCollection.description}}</p>
+      
       <div class="row">
-        <div class="col s12 m4" ng-repeat="packImg in openedPack.packImgs track by $index">
+        <div class="col s6" ng-repeat="card in openedCollection.cards track by $index">
+
           <div class="card">
+
             <div class="card-image">
-              <img ng-src="./../img/cards/set1/{{packImg}}">
+              <img ng-src="./../img/cards/set{{ openedCollection.id + '/' + whichImgCardShow(card) }}">
+              <span class="card-title">{{card.count}}</span>
             </div>
+
           </div>
+
+
         </div>
       </div>
+
+      <div class="row">
+        <div class="col s12">
+          Aqui poner, mapas de donde ver y la musia dedicada a esta ave.
+        </div>
+      </div>
+
     </div>
 
     <div class="modal-footer">

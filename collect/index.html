@@ -47,7 +47,8 @@
     	
     	<div class="row">    		
     		<div class="col s12">
-    			<h5>Remaining daily packs: {{remainingDailyFreePacks}}</h5>
+          <!-- i Have used ng-bind instead of {{}} for avoid flickering-->
+    			<h5 ng-cloak>Remaining daily packs: <span ng-bind="remainingDailyFreePacks"></span></h5>
     		</div>
     	</div>
     </div>
@@ -55,21 +56,24 @@
 
 
   <!-- Grid of collectable cards -->
-  <div class="container">
+  <div class="container" >
     <div class="section">
     	<div class="row">
 
     		<div class="col s12 m4" ng-repeat="pack in freePacksInfo track by $index">
     			<div class="card">
     				<div class="card-image">
-		          <img ng-src="./../img/cards/set1/{{pack.img}}">
-		          <span class="card-title">{{pack.name}}</span>
+              <a class="modal-trigger" ng-href="{{modalName}}" ng-click="openPack(pack); addPackToMyCollection(pack)">
+		            <img ng-src="./../img/cards/set{{pack.collection + '/' + pack.img}}">
+                <span class="card-title">{{pack.name}}</span>
+              </a>
+		          
 		        </div>
 		        <div class="card-content">
 		          <p>{{pack.description}}</p>
 		        </div>
 		        <div class="card-action">
-		          <a class="modal-trigger" ng-href="{{modalName}}" ng-click="openPack(pack); addPackToMyCollection(pack)">Add to my collection</a>
+		          <a class="modal-trigger" ng-href="{{modalName}}" ng-click="openPack(pack); addPackToMyCollection(pack)">Unblock Pack</a>
 		        </div>
     			</div>
     		</div>
@@ -84,11 +88,11 @@
 		<div class="modal-content">
       <h4>Unblocked Pack</h4>
       <p>{{openedPack.description}}</p>
-      <div class="row">
+        <div class="row">
           <div class="col s12 m4" ng-repeat="packImg in openedPack.packImgs track by $index">
             <div class="card">
               <div class="card-image">
-                <img ng-src="./../img/cards/set1/{{packImg}}">
+                <img ng-src="./../img/cards/set{{openedPack.collection + '/' + packImg}}">
               </div>
             </div>
           </div>
@@ -134,14 +138,17 @@
         <div class="col s12 m4" ng-repeat="pack in unblockedPacks track by $index">
           <div class="card">
             <div class="card-image">
-              <img ng-src="./../img/cards/set1/{{pack.img}}">
-              <span class="card-title">{{pack.name}}</span>
+              <a class="modal-trigger" ng-href="#modalrares" ng-click="openRare(pack)">
+                <img ng-src="./../img/cards/set{{pack.collection + '/' + pack.img}}">
+                <span class="card-title">{{pack.name}}</span>
+              </a>              
+              
             </div>
             <div class="card-content">
               <p>{{pack.description}}</p>
             </div>
             <div class="card-action">
-              <a class="modal-trigger" href="#modalrares" ng-click="openRare(pack)">Open collection</a>
+              <a class="modal-trigger" href="#modalrares" ng-click="openRare(pack)">Open Pack</a>
             </div>
           </div>
         </div>
@@ -157,11 +164,17 @@
             <div class="col s12 m4" ng-repeat="packImg in selectedRarePack.packImgs track by $index">
               <div class="card">
                 <div class="card-image">
-                  <img ng-src="./../img/cards/set1/{{packImg}}">
+                  <img ng-src="./../img/cards/set{{selectedRarePack.collection + '/' + packImg}}">
                 </div>
               </div>
             </div>
           </div>
+
+          <div class="row">
+            <dir class="col s12">Aqui debe ir: 1. musica relacionada al ave, 2. Lugares donde se puede ver</dir>
+            
+          </div>
+
         </div>
         <div class="modal-footer">
           <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Ok</a>
