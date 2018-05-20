@@ -16,7 +16,7 @@
 </head>
 <body>
   <div class="navbar-fixed">    
-    <nav class="light-green lighten-1" role="navigation">
+    <nav class="purple lighten-1" role="navigation">
       <div class="nav-wrapper container">
         <a id="logo-container" href="/colombirds.com/" class="brand-logo white-text">Colombirds</a>
         <!-- Hides on tablets and below -->
@@ -29,13 +29,13 @@
           <li><a href="/colombirds.com/collect/">Collect</a></li>
           <li><a href="/colombirds.com/mycollection/">My Collection</a></li>
         </ul>
-        <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons green-text text-darken-4">menu</i></a>
+        <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons white-text">menu</i></a>
       </div>
     </nav>
   </div>
   
 
-  <div id="index-banner" class="parallax-container">
+  <div id="index-banner" class="parallax-container valign-wrapper">
     <div class="section no-pad-bot">
       <div class="container">
         <br><br>
@@ -44,14 +44,21 @@
           <h5 class="header col s12 grey-text text-lighten-4">Discover the richest bird biodiversity in Colombia</h5>
         </div>
         <div class="row center">
-          <a href="/colombirds.com/collect/" id="download-button" class="btn-large waves-effect waves-light light-green lighten-1">Start Collecting</a>
+          <a href="./collect/" id="download-button" class="btn-large waves-effect waves-light yellow darken-3">Start Collecting</a>
         </div>
         <br><br>
-
       </div>
     </div>
-    <div class="parallax"><img src="background1_1.jpg" alt="Unsplashed background img 1"></div>
+
+    <!-- Note: I have modified the source code of the materialize.js file for modify the speed of the parallax with the css class layer-n -->
+    <div class="parallax layer-1"><img src="./img/parallax1/1.png" alt="Unsplashed background img 1"></div>
+    <div class="parallax layer-2"><img src="./img/parallax1/2.png" alt="Unsplashed background img 1"></div>
+    <div class="parallax layer-4"><img src="./img/parallax1/3.png" alt="Unsplashed background img 1"></div>
+    <div class="parallax layer-4"><img src="./img/parallax1/4.png" alt="Unsplashed background img 1"></div>
+    <div class="parallax layer-4"><img src="./img/parallax1/5.png" alt="Unsplashed background img 1"></div>
+    <div class="parallax layer-6"><img src="./img/parallax1/6.png" alt="Unsplashed background img 1"></div>
   </div>
+  
 
 
   <div class="container">
@@ -128,7 +135,7 @@
     <div class="parallax"><img src="background3.jpg" alt="Unsplashed background img 3"></div>
   </div>
 
-  <footer class="page-footer light-green">
+  <footer class="page-footer purple lighten-1">
     <div class="container">
       <div class="row">
         <div class="col l6 s12">
@@ -159,16 +166,17 @@
     </div>
     <div class="footer-copyright">
       <div class="container">
-      Made by <a class="green-text text-darken-4" href="http://gamebite10.com" target="_blank">Gamebite10</a>
+      Made by <a class="white-text" href="http://gamebite10.com" target="_blank"><b>Gamebite10</b></a>
       </div>
     </div>
   </footer>
 
 
   <!--  Scripts-->
-  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="js/materialize.js"></script>
-  <script src="js/init.js"></script>
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>  
+  <script src="./js/materialize.js"></script>
+  <!-- <script src="./js/parallax.min.js"></script> -->
+  <script src="./js/init.js"></script>
 
   </body>
 </html>

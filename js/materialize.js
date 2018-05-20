@@ -3839,6 +3839,8 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, {
       key: "_updateParallax",
       value: function _updateParallax() {
+
+        //console.log(options)
         var containerHeight = this.$el.height() > 0 ? this.el.parentNode.offsetHeight : 500;
         var imgHeight = this.$img[0].offsetHeight;
         var parallaxDist = imgHeight - containerHeight;
@@ -3848,7 +3850,41 @@ $jscomp.polyfill = function (e, r, p, m) {
         var windowHeight = window.innerHeight;
         var windowBottom = scrollTop + windowHeight;
         var percentScrolled = (windowBottom - top) / (containerHeight + windowHeight);
-        var parallax = parallaxDist * percentScrolled;
+
+
+        var speed = 1.0;
+        // When biggest the layer number more speed
+        // Checks if element have some layer
+        // NOTE: Keep in mind that parallaxInstance.el.classList is a DOMTokenList
+        if (this.$el[0].classList.contains('layer-1'))
+        {
+          speed = 0.1;
+        }
+        else if (this.$el[0].classList.contains('layer-2'))
+        {
+          speed = 0.3;
+        }
+        else if (this.$el[0].classList.contains('layer-3'))
+        {
+          speed = 0.4;
+        }
+        else if (this.$el[0].classList.contains('layer-4'))
+        {
+          speed = 0.6;
+        }
+        else if (this.$el[0].classList.contains('layer-5'))
+        {
+          speed = 0.8;
+        }
+        else if (this.$el[0].classList.contains('layer-6'))
+        {
+          speed = 0.9;
+        }
+
+        //console.log(this.$el[0].classList);
+
+        //console.log(speedFinal);
+        var parallax = parallaxDist * percentScrolled * speed;
 
         if (!this._enabled) {
           this.$img[0].style.transform = '';
@@ -3875,8 +3911,11 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, {
       key: "_handleScroll",
       value: function _handleScroll() {
+        // Iterates over all the parralaxes on the page
         for (var i = 0; i < Parallax._parallaxes.length; i++) {
           var parallaxInstance = Parallax._parallaxes[i];
+          
+
           parallaxInstance._updateParallax.call(parallaxInstance);
         }
       }

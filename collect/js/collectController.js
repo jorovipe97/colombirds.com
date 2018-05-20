@@ -1,60 +1,96 @@
 var app = angular.module("collect", []);
 
 app.controller("collectCtrl", function($scope) {
-	// Demo rare codes
-	$scope.goodCodes = [
-		'turpial',
-		'garza',
-		'cucarachero'
-	];
 
+	/* START BOUGHT PACKS LOGIC */
 	$scope.inputCode = '';
 
 	$scope.rarePacksInfo = [
 		{
-			name: 'Turpial',
-			description: 'Hello, you may dont know me but i want fly over the sea :D',
+			name: 'Garzas',
+			description: 'Pack details',
 			img: 'GabanPionio.jpg',
-			codes: [
-				'turpial',
-				'turpy',
-				'turpi'
-			],
-			packImgs: [
-				'GabanPionio.jpg',
-				'GarzaMorena.jpg',
-				'GarzaPaleta.jpg',
-				'PatoGuire.jpg'
-			]
-		},
-		{
-			name: 'Garza',
-			description: 'Hello, I like eat fishes in rivers, I am a bussy bird, fishes are not there for ever',
-			img: 'GarzaMorena.jpg',
+			collection: 1, // The collection which this pack is part of
 			codes: [
 				'garza',
-				'garzin'
+				'garzas',
+				'garz'
+			],
+			packImgs: [
+				'GarzaMorena.jpg',
+				'GarzaPaleta.jpg'
+			]
+		},
+		{
+			name: 'Gaban',
+			description: 'Pack details',
+			img: 'GabanPionio.jpg',
+			collection: 1, // The collection which this pack is part of
+			codes: [
+				'gaban',
+				'pionin',
+				'ciconia'
 			],
 			packImgs: [
 				'GabanPionio.jpg',
-				'GarzaMorena.jpg',
-				'GarzaPaleta.jpg',
 				'PatoGuire.jpg'
 			]
 		},
 		{
-			name: 'Cucarachero',
-			description: 'Psss, silent please i am trying to catch some cockroach',
-			img: 'PatoGuire.jpg',
+			name: 'Zamuritas',
+			description: 'Pack details',
+			img: 'zamuritas.jpg',
+			collection: 1, // The collection which this pack is part of
 			codes: [
-				'cucarachero',
-				'cochino'
+				'zamuritas',
+				'infuscatus'				
 			],
 			packImgs: [
-				'GabanPionio.jpg',
-				'GarzaMorena.jpg',
-				'GarzaPaleta.jpg',
-				'PatoGuire.jpg'
+				'zamuritas.jpg',
+				'GabanPionio.jpg'
+			]
+		},
+		{
+			name: 'Black-Collared Swallow',
+			description: 'Pack details',
+			img: 'black-collared_swallow.jpg',
+			collection: 2, // The collection which this pack is part of
+			codes: [
+				'black-collared',
+				'black'				
+			],
+			packImgs: [
+				'black-collared_swallow.jpg',
+				'cliff_swallow.jpg'
+			]
+		},
+		{
+			name: 'Collared San Martin',
+			description: 'Pack details',
+			img: 'collared_sand_martin.jpg',
+			collection: 2, // The collection which this pack is part of
+			codes: [
+				'sanmartin',
+				'santo',
+				'san martin'
+			],
+			packImgs: [
+				'collared_sand_martin.jpg',
+				'tree_swallow.jpg'
+			]
+		},
+		{
+			name: 'White-Winged Swallow',
+			description: 'Pack details',
+			img: 'white-winged_swallow.jpg',
+			collection: 2, // The collection which this pack is part of
+			codes: [
+				'white',
+				'white-winged'
+			],
+			packImgs: [
+				'white-winged_Swallow.jpg',
+				'black-collared_swallow.jpg'
 			]
 		}
 	];
@@ -97,10 +133,10 @@ app.controller("collectCtrl", function($scope) {
 						}
 					}
 
-					// The unshift() method adds new items to the beginning of an array, and returns the new length.
+					// The unshift() method adds new items to the beginning of an array, and returns the new length.					
 					$scope.unblockedPacks.unshift($scope.rarePacksInfo[i]);
 					$scope.saveUnblockedPacks();
-					M.toast({html: 'Amazing! Your rare collection was unblocked succesfully'});
+					M.toast({html: 'Amazing! You have unblocked succesfully this pack'});
 					return;
 				}
 			}
@@ -110,50 +146,78 @@ app.controller("collectCtrl", function($scope) {
 
 	$scope.loadUnblockedPacks = function ()
 	{
+
 		// Checks unblocked packs alredy exists in local storage
 		let item = localStorage.getItem('lsUnblockedPacks');
 		if (item !== null)
 		{
 			$scope.unblockedPacks = JSON.parse(item);
-		}			
+		}
 	}
 
 	/* *************************************************
 	**** FREE PACKS LOGIC ******************************
 	****************************************************
 	*/
-	$scope.freePacksInfo = [
+	$scope.freePacksInfo = [		
 		{
-			name: 'Loro',
-			description: 'Hello, you may dont know me but i want fly over the sea :D',
-			img: 'GabanPionio.jpg',
+			name: 'Garza Paleta',
+			description: 'Pack details',
+			img: 'Pack_ALasAvesDeMiLlano.png',
+			collection: 1, // The collection which this pack is part of
 			packImgs: [
-				'GabanPionio.jpg',
-				'GarzaMorena.jpg',
 				'GarzaPaleta.jpg',
 				'PatoGuire.jpg'
 			]
 		},
 		{
-			name: 'Chichafria',
-			description: 'Hello, I like eat fishes in rivers, I am a bussy bird, fishes are not there for ever',
-			img: 'GarzaMorena.jpg',
+			name: 'Tree Swallow',
+			description: 'Pack details',
+			img: 'Pack_NochesEternas.png',
+			collection: 2, // The collection which this pack is part of
 			packImgs: [
-				'GabanPionio.jpg',
-				'GarzaMorena.jpg',
-				'GarzaPaleta.jpg',
-				'PatoGuire.jpg'
+				'tree_swallow.jpg',
+				'black-collared_swallow.jpg'
 			]
 		},
 		{
-			name: 'Diostede',
-			description: 'Psss, silent please i am trying to catch some cockroach',
-			img: 'PatoGuire.jpg',
+			name: 'Zamuritas',
+			description: 'Pack details',
+			img: 'Pack_ALasAvesDeMiLlano.png',
+			collection: 1, // The collection which this pack is part of
+			packImgs: [
+				'GabanPionio.jpg',
+				'zamuritas.jpg'
+			]
+		},
+		{
+			name: 'Cliff Swallow',
+			description: 'Pack details',
+			img: 'Pack_NochesEternas.png',
+			collection: 2, // The collection which this pack is part of
+			packImgs: [
+				'cliff_swallow.jpg',
+				'collared_sand_martin.jpg'
+			]
+		},
+		{
+			name: 'Pionio',
+			description: 'Pack details',
+			img: 'Pack_ALasAvesDeMiLlano.png',
+			collection: 1, // The collection which this pack is part of
 			packImgs: [
 				'GabanPionio.jpg',
 				'GarzaMorena.jpg',
-				'GarzaPaleta.jpg',
-				'PatoGuire.jpg'
+			]
+		},
+		{
+			name: 'white-Winged Swallow',
+			description: 'Pack details',
+			img: 'Pack_NochesEternas.png',
+			collection: 2, // The collection which this pack is part of
+			packImgs: [
+				'white-winged_Swallow.jpg',
+				'collared_sand_martin.jpg'
 			]
 		}
 	];
@@ -194,6 +258,14 @@ app.controller("collectCtrl", function($scope) {
 	$scope.addPackToMyCollection = function(pack)
 	{
 
+		// Ensures there are remaining daily free packs
+		if ($scope.remainingDailyFreePacks <= 0)
+		{
+			M.toast({html: 'Sorry, You don\'t have remaingin free packs for today'});
+			$scope.modalName = '#no';
+			return;
+		}
+
 		for (let i = 0; i < $scope.addedFreePacks.length; i++)
 		{
 			// Checks if the pack wass already added to my collection
@@ -203,14 +275,7 @@ app.controller("collectCtrl", function($scope) {
 				$scope.modalName = '#no';
 				return;
 			}
-		}
-
-		// Ensures there are remaining daily free packs
-		if ($scope.remainingDailyFreePacks <= 0)
-		{
-			M.toast({html: 'Sorry, You don\'t have remaingin free packs for today'});
-			return;
-		}
+		}		
 
 		// One less daily free pack
 		$scope.remainingDailyFreePacks--;

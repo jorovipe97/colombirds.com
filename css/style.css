@@ -37,8 +37,9 @@ nos toco recurrir al !important que lo que hace es que ignora la especifidad y d
 .parallax-container {
   min-height: 380px;
   line-height: 0;
-  height: auto;
+  /*height: auto;*/
   color: rgba(255,255,255,.9);
+  height: 600px;
 }
   .parallax-container .section {
     width: 100%;
@@ -52,8 +53,6 @@ nos toco recurrir al !important que lo que hace es que ignora la especifidad y d
   #index-banner .section {
     top: 10%;
   }
-
-
 }
 
 @media only screen and (max-width : 600px) {
