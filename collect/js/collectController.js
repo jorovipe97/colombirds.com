@@ -135,7 +135,7 @@ app.controller("collectCtrl", function($scope) {
 					// Ensures the rare pack has not been unblocked
 					for (let k = 0; k < $scope.unblockedPacks.length; k++)
 					{
-						if ($scope.unblockedPacks[k] === $scope.rarePacksInfo[i])
+						if ($scope.unblockedPacks[k].name === $scope.rarePacksInfo[i].name)
 						{
 							M.toast({html: 'You have already unblocked this pack'});
 							return;
