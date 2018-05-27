@@ -14,7 +14,7 @@
   <link href="./../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="./../css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
-<body ng-app="collect" ng-controller="collectCtrl" ng-init="loadUnblockedPacks(); loadRemainingDailyFreePacks(); loadAddedFreePacks()">
+<body ng-app="collect" ng-controller="collectCtrl" ng-init="initController(); loadUnblockedPacks(); loadRemainingDailyFreePacks(); loadAddedFreePacks()">
 	<!-- Nav bar -->
 	<div class="navbar-fixed">    
     <nav class="purple lighten-1" role="navigation">
@@ -116,13 +116,23 @@
         </div>        
       </div>
 
+      <div class="row">
+        <div class="col-sm-12 col-md-4">
+          <p>Unblock new packs by scanning your bird's key rings QR</p>
+        </div>
+        <div class="col-sm-12 col-md-4">
+          <a href="#modalqr" class="modal-trigger btn waves-effect waves-light yellow darken-3" ng-click="initQrCamera()">
+            Unblock by scanning QR
+          </a>
+        </div>        
+      </div>
 
       <div class="row">
 
         <form class="input-field col s12 m6" ng-submit="submitCode()">
           <i class="material-icons prefix">add_circle</i>
           <input type="text" ng-model="inputCode" id="autocomplete-input" class="validate">
-          <label for="autocomplete-input">Unblock pack with code</label>
+          <label for="autocomplete-input">...Or unblock pack with code</label>
         </form>       
 
         <div class="input-field col s12 m2">
@@ -130,6 +140,7 @@
             Submit<i class="material-icons right">send</i>
           </button>
         </div>
+
       </div>      
 
       <!-- Unblocked rare packs -->
@@ -171,13 +182,29 @@
           </div>
 
           <div class="row">
-            <dir class="col s12">Aqui debe ir: 1. musica relacionada al ave, 2. Lugares donde se puede ver</dir>
-            
+            <dir class="col s12">Aqui debe ir: 1. musica relacionada al ave, 2. Lugares donde se puede ver</dir>            
           </div>
 
         </div>
         <div class="modal-footer">
           <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Ok</a>
+        </div>
+      </div>
+
+      <div id="modalqr" class="modal">
+        <div class="modal-content">
+          <div class="row">
+            <div class="col s12 center-align">
+              <a href="" class="waves-effect waves-yellow btn-flat" ng-click="toggleCameraId()">Toggle camera</a>
+            </div>
+          </div>
+          <div class="row">
+            <video id="preview" style="width:100%"></video>  
+          </div>          
+        </div>
+
+        <div class="modal-footer">
+          <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat" ng-click="stopScanner()">Close</a>
         </div>
       </div>
 
@@ -225,9 +252,11 @@
 	<!--  Scripts-->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <!-- QR Lector -->
+  <script src="./js/instascan.min.js"></script>
   <script src="./../js/materialize.js"></script>
   <script src="./../js/init.js"></script>
-  <script src="js/collect.js"></script>
-  <script src="js/collectController.js"></script>
+  <script src="./js/collect.js"></script>
+  <script src="./js/collectController.js"></script>
 </body>
 </html>

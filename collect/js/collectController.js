@@ -95,7 +95,16 @@ app.controller("collectCtrl", function($scope) {
 		}
 	];
 
-	$scope.selectedRarePack;
+	$scope.selectedRarePack = null;
+
+	// Array containing all the available cameras
+	$scope.canShowToggleCamBtn = false;
+	$scope.selectedCameraId = 0;
+
+	$scope.initController = function ()
+	{
+		$scope.initQrScanner();
+	}
 
 	$scope.openRare = function(selectedPack)
 	{
@@ -135,23 +144,82 @@ app.controller("collectCtrl", function($scope) {
 
 					// The unshift() method adds new items to the beginning of an array, and returns the new length.					
 					$scope.unblockedPacks.unshift($scope.rarePacksInfo[i]);
+					// Updates the view
+					$scope.$apply();
 					$scope.saveUnblockedPacks();
 					M.toast({html: 'Amazing! You have unblocked succesfully this pack'});
 					return;
 				}
 			}
-		}		
+		}
 		M.toast({html: 'Oh, your code is incorrect :('});
+	}
+
+	$scope.initQrScanner = function ()
+	{ 
+		window.scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+		window.scanner.addListener('scan', function (content) {
+			console.log(content);
+			// Closes modal
+			let elem = $('#modalqr');
+			let instance = M.Modal.getInstance(elem);
+			instance.close();
+
+			$scope.stopScanner();
+
+			// Sends the QR code
+			$scope.inputCode = content.toLowerCase();
+			$scope.submitCode();
+			$scope.inputCode = null;
+
+		});
+		window.scanner.addListener('inactive', function () {
+			console.log('Scanner stopped');
+		})
+	}
+	$scope.initQrCamera = function ()
+	{
+		// Put this snippet inside the function that is called when is opened the QR lector
+		Instascan.Camera.getCameras().then(function (_cameras) {
+		window.cameras = _cameras;
+		console.log('System available cameras');
+		for (let i = 0; i < window.cameras.length; i++)
+		{
+			console.log(window.cameras[i].name);
+		}
+		if (window.cameras.length > 0) {
+			window.scanner.start(window.cameras[$scope.selectedCameraId]);
+		} else {
+			console.error('No cameras found.');
+		}
+		}).catch(function (e) {
+			console.error(e);
+		});
+	}
+
+	$scope.stopScanner = function ()
+	{
+		window.scanner.stop();
+	}
+
+	$scope.toggleCameraId = function ()
+	{
+		let len = window.cameras.length;
+		$scope.selectedCameraId++;
+		let newId = $scope.selectedCameraId % len;
+		console.log('Number of cameras: ' + len);
+		window.scanner.start(window.cameras[newId]);
 	}
 
 	$scope.loadUnblockedPacks = function ()
 	{
 
 		// Checks unblocked packs alredy exists in local storage
-		let item = localStorage.getItem('lsUnblockedPacks');
+		let item = localStorage.getItem('lsUnblockedPacks');		
 		if (item !== null)
 		{
 			$scope.unblockedPacks = JSON.parse(item);
+			console.log($scope.unblockedPacks);
 		}
 	}
 
