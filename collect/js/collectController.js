@@ -162,7 +162,7 @@ app.controller("collectCtrl", function($scope) {
 	$scope.freePacksInfo = [		
 		{
 			name: 'Garza Paleta',
-			description: 'Pack details',
+			description: 'Platalea',
 			img: 'Pack_ALasAvesDeMiLlano.png',
 			collection: 1, // The collection which this pack is part of
 			packImgs: [
