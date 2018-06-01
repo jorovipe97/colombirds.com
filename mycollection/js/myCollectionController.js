@@ -16,6 +16,10 @@ app.controller("myCollectionCtrl", function($scope)
 				description: 'Some collection description here',
 				cards: [ // Pack 1
 					{
+						count: 0,
+						imgName: 'GarzaRoja.jpg'
+					},
+					{
 						count: 0, // The number of times user has unblocked this card
 						imgName: 'GabanPionio.jpg' // The image name
 					},
@@ -42,6 +46,10 @@ app.controller("myCollectionCtrl", function($scope)
 				name: 'Noches eternas',
 				description: 'Some collection description here',
 				cards: [ // Pack 2
+					{
+						count: 0,
+						imgName: 'mochuelo.jpg'
+					},
 					{
 						count: 0, // The number of times user has unblocked this card
 						imgName: 'black-collared_swallow.jpg' // The image name

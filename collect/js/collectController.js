@@ -7,90 +7,27 @@ app.controller("collectCtrl", function($scope) {
 
 	$scope.rarePacksInfo = [
 		{
-			name: 'Garzas',
+			name: 'GarzaRoja',
 			description: 'Pack details',
-			img: 'GabanPionio.jpg',
+			img: 'GarzaRoja.jpg',
 			collection: 1, // The collection which this pack is part of
 			codes: [
-				'garza',
-				'garzas',
-				'garz'
+				'garza_roja'
 			],
 			packImgs: [
-				'GarzaMorena.jpg',
-				'GarzaPaleta.jpg'
+				'GarzaRoja.jpg'
 			]
 		},
 		{
-			name: 'Gaban',
+			name: 'Mochuelo',
 			description: 'Pack details',
-			img: 'GabanPionio.jpg',
-			collection: 1, // The collection which this pack is part of
+			img: 'mochuelo.jpg',
+			collection: 2, // The collection which this pack is port of
 			codes: [
-				'gaban',
-				'pionin',
-				'ciconia'
+				'mochuelo'
 			],
 			packImgs: [
-				'GabanPionio.jpg',
-				'PatoGuire.jpg'
-			]
-		},
-		{
-			name: 'Zamuritas',
-			description: 'Pack details',
-			img: 'zamuritas.jpg',
-			collection: 1, // The collection which this pack is part of
-			codes: [
-				'zamuritas',
-				'infuscatus'				
-			],
-			packImgs: [
-				'zamuritas.jpg',
-				'GabanPionio.jpg'
-			]
-		},
-		{
-			name: 'Black-Collared Swallow',
-			description: 'Pack details',
-			img: 'black-collared_swallow.jpg',
-			collection: 2, // The collection which this pack is part of
-			codes: [
-				'black-collared',
-				'black'				
-			],
-			packImgs: [
-				'black-collared_swallow.jpg',
-				'cliff_swallow.jpg'
-			]
-		},
-		{
-			name: 'Collared San Martin',
-			description: 'Pack details',
-			img: 'collared_sand_martin.jpg',
-			collection: 2, // The collection which this pack is part of
-			codes: [
-				'sanmartin',
-				'santo',
-				'san martin'
-			],
-			packImgs: [
-				'collared_sand_martin.jpg',
-				'tree_swallow.jpg'
-			]
-		},
-		{
-			name: 'White-Winged Swallow',
-			description: 'Pack details',
-			img: 'white-winged_swallow.jpg',
-			collection: 2, // The collection which this pack is part of
-			codes: [
-				'white',
-				'white-winged'
-			],
-			packImgs: [
-				'white-winged_Swallow.jpg',
-				'black-collared_swallow.jpg'
+				'mochuelo.jpg'
 			]
 		}
 	];

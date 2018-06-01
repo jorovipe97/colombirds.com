@@ -23,13 +23,13 @@
 
         <!-- Hides on tablets and below -->
         <ul class="right hide-on-med-and-down">
-          <li class="active"><a href="/colombirds.com/collect/" class="white-text">Collect</a></li>
-          <li><a href="/colombirds.com/mycollection/" class="white-text">My Collection</a></li>
+          <li class="active"><a href="/collect/" class="white-text">Collect</a></li>
+          <li><a href="/mycollection/" class="white-text">My Collection</a></li>
         </ul>
 
         <ul id="nav-mobile" class="sidenav">
-          <li class="active"><a href="/colombirds.com/collect/">Collect</a></li>
-          <li><a href="/colombirds.com/mycollection/">My Collection</a></li>
+          <li class="active"><a href="/collect/">Collect</a></li>
+          <li><a href="/mycollection/">My Collection</a></li>
         </ul>
         <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons  white-text">menu</i></a>
       </div>
@@ -69,9 +69,9 @@
               </a>
 		          
 		        </div>
-		        <div class="card-content">
+		        <!-- <div class="card-content">
 		          <p>{{pack.description}}</p>
-		        </div>
+		        </div> -->
 		        <div class="card-action">
 		          <a class="modal-trigger" ng-href="{{modalName}}" ng-click="openPack(pack); addPackToMyCollection(pack)">Unblock Pack</a>
 		        </div>
@@ -155,9 +155,9 @@
               </a>              
               
             </div>
-            <div class="card-content">
+            <!-- <div class="card-content">
               <p>{{pack.description}}</p>
-            </div>
+            </div> -->
             <div class="card-action">
               <a class="modal-trigger" href="#modalrares" ng-click="openRare(pack)">Open Pack</a>
             </div>
@@ -170,7 +170,6 @@
       <div id="modalrares" class="modal">
         <div class="modal-content">
           <h4>{{selectedRarePack.name}}</h4>
-          <p>{{selectedRarePack.description}}</p>
           <div class="row">
             <div class="col s12 m4" ng-repeat="packImg in selectedRarePack.packImgs track by $index">
               <div class="card">
@@ -181,9 +180,9 @@
             </div>
           </div>
 
-          <div class="row">
+          <!-- <div class="row">
             <dir class="col s12">Aqui debe ir: 1. musica relacionada al ave, 2. Lugares donde se puede ver</dir>            
-          </div>
+          </div> -->
 
         </div>
         <div class="modal-footer">
