@@ -6,6 +6,10 @@
  * Made By MaterializeCSS.com
  */
 
+.primary-color {
+  background-color: #FF7E5F;
+}
+
 nav ul a,
 nav .brand-logo {
   color: #444;

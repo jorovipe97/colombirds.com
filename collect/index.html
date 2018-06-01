@@ -17,7 +17,7 @@
 <body ng-app="collect" ng-controller="collectCtrl" ng-init="initController(); loadUnblockedPacks(); loadRemainingDailyFreePacks(); loadAddedFreePacks()">
 	<!-- Nav bar -->
 	<div class="navbar-fixed">    
-    <nav class="purple lighten-1" role="navigation">
+    <nav class="primary-color" role="navigation">
       <div class="nav-wrapper container">
         <a id="logo-container" href="/colombirds.com/" class="brand-logo white-text">Colombirds</a>
 
@@ -121,7 +121,7 @@
           <p>Unblock new packs by scanning your bird's key rings QR</p>
         </div>
         <div class="col-sm-12 col-md-4">
-          <a href="#modalqr" class="modal-trigger btn waves-effect waves-light yellow darken-3" ng-click="initQrCamera()">
+          <a href="#modalqr" class="modal-trigger btn waves-effect waves-light yellow lighten-1 black-text" ng-click="initQrCamera()">
             Unblock by scanning QR
           </a>
         </div>        
@@ -136,7 +136,7 @@
         </form>       
 
         <div class="input-field col s12 m2">
-          <button id="codeSubmitBtn" class="btn waves-effect waves-light yellow darken-3" type="submit" name="action" ng-click="submitCode()">
+          <button id="codeSubmitBtn" class="btn waves-effect waves-light yellow lighten-1 black-text" type="submit" name="action" ng-click="submitCode()">
             Submit<i class="material-icons right">send</i>
           </button>
         </div>
@@ -212,42 +212,13 @@
   <!-- END BOUGHT PACKS -->
 
 
-  <footer class="page-footer purple lighten-1">
-    <div class="container">
-      <div class="row">
-        <div class="col l6 s12">
-          <h5 class="white-text">Company Bio</h5>
-          <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
-
-
-        </div>
-        <div class="col l3 s12">
-          <h5 class="white-text">Settings</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
-          </ul>
-        </div>
-        <div class="col l3 s12">
-          <h5 class="white-text">Connect</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
+  <footer class="page-footer primary-color">    
     <div class="footer-copyright">
       <div class="container">
-      Made by <a class="white-text" href="http://gamebite10.com" target="_blank"><b>Gamebite10</b></a>
+      Made with <i class="material-icons">favorite</i> by <a class="white-text" href="http://gamebite10.com" target="_blank"><b>Gamebite10</b></a>
       </div>
     </div>
   </footer>
-
 	<!--  Scripts-->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
